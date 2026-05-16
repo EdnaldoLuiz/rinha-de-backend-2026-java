@@ -1,0 +1,59 @@
+services:
+  load-balancer:
+    image: haproxy:3.0-alpine
+    ports:
+      - "9999:9999"
+    volumes:
+      - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro
+    depends_on:
+      - api-1
+      - api-2
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: "32MB"
+
+  api-1:
+    image: ghcr.io/ednaldoluiz/rinha-2026-java:latest
+    environment:
+      - PORT=8080
+      - INDEX_BINARY_FILE=/app/resources/fraud-index.dat
+      - INDEX_MODE=ivf
+      - IVF_CLUSTERS=4096
+      - IVF_FAST_NPROBE=8
+      - IVF_FULL_NPROBE=32
+      - IVF_BBOX_REPAIR=0
+      - SERVER_THREADS=4
+      - IVF_STATS=0
+      - FALLBACK_STATS=0
+      - RUNTIME_MISMATCH_DEBUG=0
+    expose:
+      - "8080"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.375"
+          memory: "158MB"
+
+  api-2:
+    image: ghcr.io/ednaldoluiz/rinha-2026-java:latest
+    environment:
+      - PORT=8080
+      - INDEX_BINARY_FILE=/app/resources/fraud-index.dat
+      - INDEX_MODE=ivf
+      - IVF_CLUSTERS=4096
+      - IVF_FAST_NPROBE=8
+      - IVF_FULL_NPROBE=32
+      - IVF_BBOX_REPAIR=0
+      - SERVER_THREADS=4
+      - IVF_STATS=0
+      - FALLBACK_STATS=0
+      - RUNTIME_MISMATCH_DEBUG=0
+    expose:
+      - "8080"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.375"
+          memory: "158MB"

@@ -1,0 +1,11 @@
+{
+  "participants": ["Ednaldo Luiz"],
+  "social": [
+    "https://github.com/EdnaldoLuiz",
+    "https://www.ednaldoluiz.com/pt-BR",
+    "https://devblueprints.com/pt"
+  ],
+  "source-code-repo": "https://github.com/EdnaldoLuiz/rinha-de-backend-2026-java",
+  "stack": ["java", "jvm", "haproxy"],
+  "open_to_work": false
+}
