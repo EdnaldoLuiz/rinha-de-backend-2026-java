@@ -15,13 +15,13 @@ services:
           memory: "32MB"
 
   api-1:
-    image: ghcr.io/ednaldoluiz/rinha-2026-java:v2-native-4096-8-32
+    image: ghcr.io/ednaldoluiz/rinha-2026-java:v3-native-zero-32
     environment:
       - PORT=8080
       - INDEX_BINARY_FILE=/app/resources/fraud-index.dat
       - INDEX_MODE=ivf
       - IVF_CLUSTERS=4096
-      - IVF_FAST_NPROBE=8
+      - IVF_FAST_NPROBE=32
       - IVF_FULL_NPROBE=32
       - IVF_BBOX_REPAIR=0
       - SERVER_THREADS=1
@@ -37,13 +37,13 @@ services:
           memory: "158MB"
 
   api-2:
-    image: ghcr.io/ednaldoluiz/rinha-2026-java:v2-native-4096-8-32
+    image: ghcr.io/ednaldoluiz/rinha-2026-java:v3-native-zero-32
     environment:
       - PORT=8080
       - INDEX_BINARY_FILE=/app/resources/fraud-index.dat
       - INDEX_MODE=ivf
       - IVF_CLUSTERS=4096
-      - IVF_FAST_NPROBE=8
+      - IVF_FAST_NPROBE=32
       - IVF_FULL_NPROBE=32
       - IVF_BBOX_REPAIR=0
       - SERVER_THREADS=1
